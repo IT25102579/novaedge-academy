@@ -23,16 +23,15 @@ import java.util.ArrayList;
  */
 public class RegistrationQueue {
 
-    // ── Singleton instance ────────────────────────────────────────────────────
+   
     // static means one instance is shared across the entire application.
-    // Only created once when the class is first loaded.
+    
     private static final RegistrationQueue INSTANCE = new RegistrationQueue();
 
-    // The underlying queue — LinkedList implements the Queue interface.
-    // Queue<int[]> stores int arrays of [studentId, courseId].
+   
     private final Queue<int[]> queue = new LinkedList<>();
 
-    // Private constructor — prevents anyone from doing 'new RegistrationQueue()'
+    // Private constructor
     private RegistrationQueue() {}
 
     /**
@@ -43,10 +42,8 @@ public class RegistrationQueue {
         return INSTANCE;
     }
 
-    // ════════════════════════════════════════════════════════════════════════
+    
     //  enqueue() — Person 1's responsibility
-    //  Adds a new enrollment request to the BACK of the queue.
-    // ════════════════════════════════════════════════════════════════════════
 
     /**
      * Adds a new enrollment request to the back of the queue.
@@ -62,23 +59,21 @@ public class RegistrationQueue {
                 return false; // already queued
             }
         }
-        // queue.add() inserts at the BACK — this is the FIFO enqueue operation
+        
         queue.add(new int[]{studentId, courseId});
         return true;
     }
 
-    // ════════════════════════════════════════════════════════════════════════
+    
     //  dequeue() + processAll() — Person 5's responsibility
-    //  Removes requests from the FRONT and saves them to the database.
-    // ════════════════════════════════════════════════════════════════════════
+   
 
     /**
      * Removes and returns the request at the FRONT of the queue (FIFO).
      * Returns null if the queue is empty.
      */
     public int[] dequeue() {
-        // queue.poll() removes and returns the front element.
-        // Returns null (not an exception) if the queue is empty — safer than remove().
+
         return queue.poll();
     }
 
@@ -101,10 +96,9 @@ public class RegistrationQueue {
         return saved;
     }
 
-    // ════════════════════════════════════════════════════════════════════════
+    
     //  displayQueue() — Person 2's responsibility
-    //  Returns all items in the queue without removing them.
-    // ════════════════════════════════════════════════════════════════════════
+    
 
     /**
      * Returns a snapshot of all pending requests as a readable list.
@@ -113,7 +107,7 @@ public class RegistrationQueue {
      */
     public List<int[]> displayQueue() {
         // Copy queue contents into a plain list for the JSP to iterate over.
-        // Iterating a Queue directly does not remove elements.
+       
         return new ArrayList<>(queue);
     }
 
@@ -131,9 +125,9 @@ public class RegistrationQueue {
         return queue.isEmpty();
     }
 
-    // ════════════════════════════════════════════════════════════════════════
+    
     //  isQueued() — check if a request is already pending
-    // ════════════════════════════════════════════════════════════════════════
+  
 
     /**
      * Returns true if a pending request for this student+course pair exists.
