@@ -6,7 +6,7 @@ import javax.servlet.http.*;
 import java.io.IOException;
 
 @WebServlet("/register")
-public class   RegisterServlet extends HttpServlet {
+public class RegisterServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp)
