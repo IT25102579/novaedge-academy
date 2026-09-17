@@ -9,7 +9,7 @@ public class DBUtil_Course {
     private static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(
             "jdbc:mysql://localhost:3306/novaedge?useSSL=false&serverTimezone=UTC",
-            "root", "your_password_here"
+            "root", "123"
         );
     }
 
